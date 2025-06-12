@@ -2,7 +2,12 @@
 
 int	arg_checker (char *arg)
 {
-	
+	int	i;
+
+	i = 0;
+	if (!arg)
+		return (NULL);
+	while (arg[i])
 }
 
 int main (int ac, char **av)
@@ -12,8 +17,8 @@ int main (int ac, char **av)
 	i = 0;
 	if (ac > 2)
 	{
-		While (av[i++])
+		while (av[i++])
 			if (arg_checker(av[i]) == 0)
-				return (write(1,"Error", 5));
+				return (write(1,"Error\n", 7));
 	}
 }
