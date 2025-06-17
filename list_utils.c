@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diogo <diogo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 18:04:41 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/15 19:58:18 by diogo            ###   ########.fr       */
+/*   Updated: 2025/06/17 15:18:39 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_stack	*ft_lst_last(t_stack *stack)
 {
 	t_stack	*ptr;
 
+	
 	ptr = stack;
 	while (ptr->up)
 	{
@@ -69,4 +70,19 @@ void	ft_lstclear(t_stack *stack)
 		free (ptr);
 		ptr = stack;
 	}
+}
+
+int	ft_lstsize(t_stack *lst)
+{
+	int	i;
+
+	i = 0;
+	if (!lst)
+		return (0);
+	while (lst != NULL)
+	{
+		lst = lst->up;
+		i++;
+	}
+	return (i);
 }

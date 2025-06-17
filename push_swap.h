@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diogo <diogo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:01:58 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/15 20:18:21 by diogo            ###   ########.fr       */
+/*   Updated: 2025/06/17 18:26:29 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,34 +36,25 @@ typedef struct s_list
 // }t_table;
 
 // main
+
 int	arg_checker (char *arg);
-int ft_populate_lst (int argc, char **args, t_stack **stack_a);
 
 //list_utils
 t_stack	*ft_lstnew(long content);
 t_stack	*ft_lst_last(t_stack *stack);
 void	ft_lstadd_back(t_stack **stack, t_stack *node);
 void	ft_lstclear(t_stack *stack);
+int		ft_lstsize(t_stack *lst);
+
 
 //checker_utils
 size_t	ft_count_words(const char *a, char c);
-char	*ft_makestring(const char *s, char c);
-void	ft_free(char **s);
-char	**ft_minisplit(char **a, char const *s, char c);
-char	**ft_split(char const *s, char c);
-
-// checker_utils
-int validity_check(t_stack *stack);
-int	ft_isdigit(int c);
-int	ft_atoi(const char *nptr);
+int		arg_validity(char *str);
+int		double_check(t_stack *stack, long nbr);
+int		ft_split_atoi(const char *arg, t_stack **stack);
 
 // libft_helper
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t nmemb, size_t size);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-size_t	ft_strlen(const char *s);
-
-
+int		ft_isdigit(int c);
 
 
 

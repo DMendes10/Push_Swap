@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build push_swap",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-g",
+        "push_swap.c",
+        "checker_utils.c",
+        "libft_helper.c",
+        "list_utils.c",
+        "-o",
+        "push_swap"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}
