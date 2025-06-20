@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:01:29 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/17 19:09:14 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/20 18:41:24 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	check_sorted (t_stack *stack_a, t_stack *stack_b)
 	if (stack_b)
 		return (0);
 	ptr = stack_a;
-	while (ptr->up)
+	while (ptr->down)
 	{
-		if (ptr->number > ptr->up->number)
+		if (ptr->number > ptr->down->number)
 			return (0);
-		ptr = ptr->up;
+		ptr = ptr->down;
 	}
 	return (1);
 }
@@ -50,10 +50,15 @@ int main (int ac, char **av)
 	}
 	if (check_sorted (stack_a, stack_b))
 		return (free(stack_a), free(stack_b), printf("sorted"), 0);
-	
+	choose_sort (&stack_a, &stack_b);
 	while (stack_a)
 	{
-		printf("%ld\n", stack_a->number);
-		stack_a = stack_a->up;
+		printf("stack a =%ld\n", stack_a->number);
+		stack_a = stack_a->down;
 	}
+	// while (stack_b)
+	// {
+	// 	printf("stack b =%ld\n", stack_b->number);
+	// 	stack_b = stack_b->down;
+	// }
 }

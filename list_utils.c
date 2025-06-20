@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 18:04:41 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/17 15:18:39 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:55:45 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ t_stack	*ft_lst_last(t_stack *stack)
 
 	
 	ptr = stack;
-	while (ptr->up)
+	while (ptr->down)
 	{
-		ptr = ptr->up;
+		ptr = ptr->down;
 	}
 	return (ptr);
 }
@@ -52,8 +52,8 @@ void	ft_lstadd_back(t_stack **stack, t_stack *node)
 	else
 	{
 		last = ft_lst_last(*stack);
-		last->up = node;
-		node->down = last;
+		last->down = node;
+		node->up = last;
 	}
 }
 
@@ -66,7 +66,7 @@ void	ft_lstclear(t_stack *stack)
 	ptr = stack;
     while (ptr)
 	{
-		stack = stack->up;
+		stack = stack->down;
 		free (ptr);
 		ptr = stack;
 	}
@@ -81,7 +81,7 @@ int	ft_lstsize(t_stack *lst)
 		return (0);
 	while (lst != NULL)
 	{
-		lst = lst->up;
+		lst = lst->down;
 		i++;
 	}
 	return (i);

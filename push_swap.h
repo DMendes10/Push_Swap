@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:01:58 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/17 18:26:29 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/20 19:38:16 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stddef.h>
 # include <limits.h>
 
+# define SUCCESS 1
+# define FAILED 0
 
 typedef struct s_list
 {
@@ -46,7 +48,6 @@ void	ft_lstadd_back(t_stack **stack, t_stack *node);
 void	ft_lstclear(t_stack *stack);
 int		ft_lstsize(t_stack *lst);
 
-
 //checker_utils
 size_t	ft_count_words(const char *a, char c);
 int		arg_validity(char *str);
@@ -55,7 +56,25 @@ int		ft_split_atoi(const char *arg, t_stack **stack);
 
 // libft_helper
 int		ft_isdigit(int c);
+void	reverse_rotate_both (t_stack **stack_a, t_stack **stack_b);
 
+// a_operations
+void swap_a (t_stack **stack_a);
+void	swap_both (t_stack **stack_a, t_stack **stack_b);
+void	push_a (t_stack **stack_a, t_stack **stack_b);
+void	rotate_a (t_stack **stack_a);
+void	reverse_rotate_a (t_stack **stack_a);
+
+// b_operations
+void	swap_b (t_stack **stack_b);
+void	push_b (t_stack **stack_a, t_stack **stack_b);
+void	rotate_b (t_stack **stack_b);
+void	rotate_both (t_stack **stack_a, t_stack **stack_b);
+void	reverse_rotate_b (t_stack **stack_b);
+
+// sorting_utils
+void	choose_sort (t_stack **stack_a, t_stack **stack_b);
+void	sort_three (t_stack **stack);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 18:56:28 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/17 18:27:49 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:03:39 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int double_check(t_stack *stack, long nbr)
     {
         if (nbr == last->number)
             return (0);
-        last = last->down;
+        last = last->up;
     }
     return (1);
 }
@@ -43,6 +43,8 @@ int	ft_split_atoi(const char *arg, t_stack **stack)
 		sign = 1;
 		while (arg[i] == ' ')
 			i++;
+		if (!arg[i])
+			return (SUCCESS);
 		if (arg[i] == '-' || arg[i] == '+')
 			if (arg[i++] == '-')
 				sign *= -1;
@@ -50,10 +52,10 @@ int	ft_split_atoi(const char *arg, t_stack **stack)
 			result = (result * 10) + (arg[i++] - 48);
 		result *= sign;
 		if (result > 2147483647 || result < -2147483648 || !double_check(*stack, result))
-			return (0);
+			return (FAILED);
 		ft_lstadd_back (stack, ft_lstnew(result));
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 size_t	ft_count_words(const char *a, char c)
