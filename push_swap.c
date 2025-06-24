@@ -6,18 +6,43 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:01:29 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/20 18:41:24 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/24 18:19:06 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_sorted (t_stack *stack_a, t_stack *stack_b)
+void print_value (t_stack *a, t_stack *b) // delete
+{
+	printf("\nA\tB");
+	printf("\n");
+	while (a != NULL || b != NULL)
+	{
+		if (a)
+		{
+			printf("%d", (int)a->index);
+			a = a->down;
+		}
+		else
+			printf("   ");
+		printf("\t   ");
+		if (b)
+		{
+			printf("%d\n", (int)b->index);
+			b = b->down;
+		}
+		else
+			printf("\n");
+	}
+	printf("\n");
+	printf("--------------------------------\n");
+	fflush(stdout);
+}
+
+int	check_sorted (t_stack *stack_a)
 {
 	t_stack *ptr;
 	
-	if (stack_b)
-		return (0);
 	ptr = stack_a;
 	while (ptr->down)
 	{
@@ -48,17 +73,33 @@ int main (int ac, char **av)
 			return (free(stack_a), free(stack_b), 0);
 		}
 	}
-	if (check_sorted (stack_a, stack_b))
+	if (check_sorted (stack_a))
 		return (free(stack_a), free(stack_b), printf("sorted"), 0);
 	choose_sort (&stack_a, &stack_b);
-	while (stack_a)
-	{
-		printf("stack a =%ld\n", stack_a->number);
-		stack_a = stack_a->down;
-	}
+	print_value (stack_a, stack_b);
+}
+
+	
+	
+	
+	
+	
+	
+	
+	// while (stack_a)
+	// {
+	// 	printf("stack a =%ld\n stack_a index = %ld\n", stack_a->number, stack_a->index);
+	// 	stack_a = stack_a->down;
+	// }
+	
+	// while (stack_b)
+	// {
+	// 	printf("stack b =%ld\n stack_b index = %ld\n", stack_b->number, stack_b->index);
+	// 	stack_b = stack_b->down;
+	// }
 	// while (stack_b)
 	// {
 	// 	printf("stack b =%ld\n", stack_b->number);
 	// 	stack_b = stack_b->down;
 	// }
-}
+

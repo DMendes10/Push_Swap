@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:01:58 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/20 19:38:16 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/24 18:18:40 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ typedef struct s_list
 	struct s_list	*up;
 	struct s_list	*down;
 	long			number;
+	long			index;
 }t_stack;
 
-// typedef struct s_list
-// {
-// 	int		list_size;
-// 	t_stack	*head;
-// 	t_stack	*tail;
-// }t_table;
+typedef struct s_range
+{
+	int		min;
+	int		max;
+	int		count_limit;
+}t_range;
 
 // main
 
@@ -59,7 +60,7 @@ int		ft_isdigit(int c);
 void	reverse_rotate_both (t_stack **stack_a, t_stack **stack_b);
 
 // a_operations
-void swap_a (t_stack **stack_a);
+void	swap_a (t_stack **stack_a);
 void	swap_both (t_stack **stack_a, t_stack **stack_b);
 void	push_a (t_stack **stack_a, t_stack **stack_b);
 void	rotate_a (t_stack **stack_a);
@@ -75,6 +76,12 @@ void	reverse_rotate_b (t_stack **stack_b);
 // sorting_utils
 void	choose_sort (t_stack **stack_a, t_stack **stack_b);
 void	sort_three (t_stack **stack);
+void	normalize_stack (t_stack **stack_a, int size);
+void	sort_b(t_stack **stack_a, t_stack **stack_b, t_range data);
+
+int	check_sorted (t_stack *stack_a);
+
+void print_value (t_stack *a, t_stack *b);
 
 
 #endif

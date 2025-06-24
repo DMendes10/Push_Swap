@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:59:27 by diomende          #+#    #+#             */
-/*   Updated: 2025/06/20 19:18:18 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/24 18:19:39 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,81 @@
 
 void	choose_sort (t_stack **stack_a, t_stack **stack_b)
 {
-	int size;
+	int	size;
+	t_range	data;
 
 	size = ft_lstsize (*stack_a);
 	if (size == 2)
 		return (swap_a (stack_a));
 	else if (size == 3)
 		sort_three(stack_a);
-	// else if (size == 5)
-	// 	sort_five(stack_a, stack_b);
+	else
+	{
+		normalize_stack(stack_a, size);
+		data.min = size / 10;
+		data.max = data.min * 2;
+		data.count_limit = size - 2;
+		while (ft_lstsize(*stack_a) > 3 && data.max <= size)
+		{
+			sort_b(stack_a, stack_b, data);
+			data.min += size / 5;
+			data.max += size / 5;
+		}
+		if (!check_sorted(*stack_a))
+			sort_three(stack_a);
+		sort_a (stack_a, stack_b);
+	}
+}
+
+void	normalize_stack (t_stack **stack_a, int size)
+{
+	int	counter;
+	int	idx;
+	t_stack	*smallest;
+	t_stack	*stack;
+
+	counter = 0;
+	idx = 1;
+	while (counter < size)
+	{
+		stack = *stack_a;
+		while (stack->index != 0)
+			stack = stack->down;
+		smallest = stack;
+		stack = *stack_a;
+		while (stack)
+		{
+			if (stack->number < smallest->number && stack->index == 0)
+				smallest = stack;
+			stack = stack->down;
+		}
+		smallest->index = idx;
+		idx++;
+		counter++;
+	}
+}
+
+void	sort_b(t_stack **stack_a, t_stack **stack_b, t_range data)
+{
+	int	count;
+
+	count = 0;
+	while (ft_lstsize(*stack_a) > 3 && count < (data.max - data.min) * 2)
+	{
+		if ((*stack_a)->index <= data.min && (*stack_a)->index < data.count_limit)
+		{
+			push_b (stack_a, stack_b);
+			rotate_b (stack_b);
+			count++;
+		}
+		else if ((*stack_a)->index <= data.max && (*stack_a)->index < 98)
+		{
+			push_b (stack_a, stack_b);
+			count++;
+		}
+		else 
+			rotate_a(stack_a);
+	}
 }
 
 void	sort_three (t_stack **stack)
@@ -43,4 +109,9 @@ void	sort_three (t_stack **stack)
 		reverse_rotate_a (stack);
 		swap_a(stack);
 	}
+}
+
+void	sort_a (t_stack **stack_a, t_stack **stack_b)
+{
+	
 }

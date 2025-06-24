@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 18:49:36 by diomende          #+#    #+#             */
-/*   Updated: 2025/06/20 17:47:04 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:03:24 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 void	swap_b (t_stack **stack_b)
 {
 	int		temp;
+	int		idx;
 
 	if (ft_lstsize (*stack_b) < 2)
 		return ;
@@ -24,6 +25,10 @@ void	swap_b (t_stack **stack_b)
 	temp = (*stack_b)->number;
 	(*stack_b)->number = (*stack_b)->down->number;
 	(*stack_b)->down->number = temp;
+
+	idx = (*stack_b)->index;
+	(*stack_b)->index = (*stack_b)->down->index;
+	(*stack_b)->down->index = idx;
 
 	write (1, "sb\n", 3);
 }

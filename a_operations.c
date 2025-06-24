@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 16:10:15 by diomende          #+#    #+#             */
-/*   Updated: 2025/06/20 17:36:39 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:02:43 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,17 @@
 void	swap_a (t_stack **stack_a)
 {
 	int		temp;
+	int		idx;
 
 	if (ft_lstsize (*stack_a) < 2)
 		return ;
 	temp = (*stack_a)->number;
 	(*stack_a)->number = (*stack_a)->down->number;
 	(*stack_a)->down->number = temp;
+
+	idx = (*stack_a)->index;
+	(*stack_a)->index = (*stack_a)->down->index;
+	(*stack_a)->down->index = idx;
 
 	write (1, "sa\n", 3);
 }
