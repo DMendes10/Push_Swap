@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 18:49:36 by diomende          #+#    #+#             */
-/*   Updated: 2025/06/24 15:03:24 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:48:15 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	rotate_b (t_stack **stack_b)
 	t_stack *last_node;
 
 	if (!*stack_b)
+		return ;
+	if (ft_lstsize (*stack_b) < 2)
 		return ;
 	first_node = *stack_b;
 	last_node = ft_lst_last(*stack_b);

@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 16:10:15 by diomende          #+#    #+#             */
-/*   Updated: 2025/06/24 15:02:43 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/26 17:37:11 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,13 @@ void	push_a (t_stack **stack_a, t_stack **stack_b)
 	if (!*stack_b)
 		return ;
 	node = *stack_b;
-	*stack_b = (*stack_b)->down;
-	(*stack_b)->up = NULL;
+	if (ft_lstsize (*stack_b) < 2)
+		*stack_b = NULL;
+	else
+	{
+		*stack_b = (*stack_b)->down;
+		(*stack_b)->up = NULL;
+	}
 	if (!*stack_a)
 	{
 		*stack_a = node;

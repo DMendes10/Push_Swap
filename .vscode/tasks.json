@@ -15,6 +15,9 @@
         "libft_helper.c",
         "list_utils.c",
 		"operations.c",
+		"sorting_b.c",
+		"sorting_utils.c",
+		"sorting_part2.c",
         "-o",
         "push_swap"
       ],

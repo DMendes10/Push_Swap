@@ -6,13 +6,13 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:59:27 by diomende          #+#    #+#             */
-/*   Updated: 2025/06/24 18:19:39 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/27 17:01:16 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	choose_sort (t_stack **stack_a, t_stack **stack_b)
+void	choose_sort (t_stack **stack_a, t_stack **stack_b, int divider)
 {
 	int	size;
 	t_range	data;
@@ -22,21 +22,15 @@ void	choose_sort (t_stack **stack_a, t_stack **stack_b)
 		return (swap_a (stack_a));
 	else if (size == 3)
 		sort_three(stack_a);
+	else if (size == 4)
+		organize_four(stack_a, stack_b, 4);
 	else
 	{
-		normalize_stack(stack_a, size);
-		data.min = size / 10;
-		data.max = data.min * 2;
-		data.count_limit = size - 2;
-		while (ft_lstsize(*stack_a) > 3 && data.max <= size)
-		{
-			sort_b(stack_a, stack_b, data);
-			data.min += size / 5;
-			data.max += size / 5;
-		}
+		normalize_and_push (stack_a, stack_b, size, divider);
 		if (!check_sorted(*stack_a))
 			sort_three(stack_a);
-		sort_a (stack_a, stack_b);
+		while (ft_lstsize (*stack_b) > 0)
+			push_decider (stack_a, stack_b, ft_lstsize (*stack_b));
 	}
 }
 
@@ -75,13 +69,13 @@ void	sort_b(t_stack **stack_a, t_stack **stack_b, t_range data)
 	count = 0;
 	while (ft_lstsize(*stack_a) > 3 && count < (data.max - data.min) * 2)
 	{
-		if ((*stack_a)->index <= data.min && (*stack_a)->index < data.count_limit)
+		if ((*stack_a)->index < data.min && (*stack_a)->index < data.count_limit)
 		{
 			push_b (stack_a, stack_b);
 			rotate_b (stack_b);
 			count++;
 		}
-		else if ((*stack_a)->index <= data.max && (*stack_a)->index < 98)
+		else if ((*stack_a)->index <= data.max && (*stack_a)->index < data.count_limit)
 		{
 			push_b (stack_a, stack_b);
 			count++;
@@ -111,7 +105,18 @@ void	sort_three (t_stack **stack)
 	}
 }
 
-void	sort_a (t_stack **stack_a, t_stack **stack_b)
+void	normalize_and_push (t_stack **stack_a, t_stack **stack_b, int size, int divider)
 {
-	
+	t_range	data;
+
+	normalize_stack(stack_a, size);
+	data.min = divider;
+	data.max = data.min * 2;
+	data.count_limit = size - 2;
+	while (ft_lstsize(*stack_a) > 3)
+	{
+		sort_b(stack_a, stack_b, data);
+		data.min += (divider * 2);
+		data.max += (divider * 2);
+	}
 }

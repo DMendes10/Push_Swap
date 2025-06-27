@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:01:58 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/24 18:18:40 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/27 17:01:53 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,29 @@ void	rotate_both (t_stack **stack_a, t_stack **stack_b);
 void	reverse_rotate_b (t_stack **stack_b);
 
 // sorting_utils
-void	choose_sort (t_stack **stack_a, t_stack **stack_b);
+void	choose_sort (t_stack **stack_a, t_stack **stack_b, int divider);
 void	sort_three (t_stack **stack);
 void	normalize_stack (t_stack **stack_a, int size);
 void	sort_b(t_stack **stack_a, t_stack **stack_b, t_range data);
+void	normalize_and_push (t_stack **stack_a, t_stack **stack_b, int size, int divider);
+
+
+// sorting_b
+void	push_b_down (t_stack **stack_a, t_stack **stack_b, int idx);
+void	push_b_up (t_stack **stack_a, t_stack **stack_b, int idx);
+void	push_b_down_alt (t_stack **stack_a, t_stack **stack_b, int idx);
+void	push_b_up_alt (t_stack **stack_a, t_stack **stack_b, int idx);
+void	organize_four (t_stack **stack_a, t_stack **stack_b, int size);
+
+
+
+// sorting_part2
+void	push_decider (t_stack **stack_a, t_stack **stack_b, int size);
+int		push_cost (t_stack *stack_b, int idx);
+int		top_cost (t_stack *stack_b, int idx);
+int		bottom_cost (t_stack *stack_b, int idx);
+
+
 
 int	check_sorted (t_stack *stack_a);
 
