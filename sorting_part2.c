@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:25:55 by diomende          #+#    #+#             */
-/*   Updated: 2025/06/26 17:05:06 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:08:13 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	push_decider (t_stack **stack_a, t_stack **stack_b, int size)
 {
 	if (size < 2)
 		push_a (stack_a, stack_b);
-	else if (push_cost (*stack_b, size) < push_cost (*stack_b, size - 1))
+	else if (push_cost (*stack_b, size) <= push_cost (*stack_b, size - 1))
 	{
 		if (top_cost (*stack_b, size) < bottom_cost(*stack_b, size))
 			push_b_up (stack_a, stack_b, size);
