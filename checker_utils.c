@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 18:56:28 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/20 15:03:39 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/27 18:01:03 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 // checks if the last number added to the list already exists in the list 
 // at the begining the list has not been initialized so we check for that
-int double_check(t_stack *stack, long nbr)
+int	double_check(t_stack *stack, long nbr)
 {
-    t_stack *last;
-	
+	t_stack	*last;
+
 	if (ft_lstsize (stack) < 1)
 		return (1);
-    last = ft_lst_last(stack);
-    while (last)
-    {
-        if (nbr == last->number)
-            return (0);
-        last = last->up;
-    }
-    return (1);
+	last = ft_lst_last(stack);
+	while (last)
+	{
+		if (nbr == last->number)
+			return (0);
+		last = last->up;
+	}
+	return (1);
 }
 
 int	ft_split_atoi(const char *arg, t_stack **stack)
@@ -51,7 +51,8 @@ int	ft_split_atoi(const char *arg, t_stack **stack)
 		while (ft_isdigit(arg[i]) == 1)
 			result = (result * 10) + (arg[i++] - 48);
 		result *= sign;
-		if (result > 2147483647 || result < -2147483648 || !double_check(*stack, result))
+		if (result > 2147483647 || result < -2147483648 || \
+		!double_check(*stack, result))
 			return (FAILED);
 		ft_lstadd_back (stack, ft_lstnew(result));
 	}

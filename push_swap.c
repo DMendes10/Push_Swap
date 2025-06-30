@@ -6,16 +6,16 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:01:29 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/27 17:26:28 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/27 17:43:17 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_sorted (t_stack *stack_a)
+int	check_sorted(t_stack *stack_a)
 {
-	t_stack *ptr;
-	
+	t_stack	*ptr;
+
 	ptr = stack_a;
 	while (ptr->down)
 	{
@@ -43,12 +43,11 @@ int	optimal_divider(int size)
 	return (divider);
 }
 
-
-int main (int ac, char **av)
+int	main(int ac, char **av)
 {
-	int	i;
-	t_stack *stack_a;
-	t_stack *stack_b;
+	int		i;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	i = 0;
 	stack_a = NULL;
@@ -60,7 +59,7 @@ int main (int ac, char **av)
 	{
 		if (!arg_validity(av[i]) || !ft_split_atoi (av[i], &stack_a))
 		{
-			write(2,"Error\n", 6);
+			write (2, "Error\n", 6);
 			return (ft_lstclear (stack_a), ft_lstclear(stack_b), 0);
 		}
 	}
@@ -97,4 +96,3 @@ int main (int ac, char **av)
 // 	printf("--------------------------------\n");
 // 	fflush(stdout);
 // }
-

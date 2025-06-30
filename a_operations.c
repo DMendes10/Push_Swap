@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 16:10:15 by diomende          #+#    #+#             */
-/*   Updated: 2025/06/26 17:37:11 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/27 17:53:19 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,35 @@
 
 // Swap the first 2 elements at the top of stack a /
 //  Do nothing if there is only one element or none.
-void	swap_a (t_stack **stack_a)
+void	swap_a(t_stack **stack_a)
 {
-	int		temp;
-	int		idx;
+	int	temp;
+	int	idx;
 
 	if (ft_lstsize (*stack_a) < 2)
 		return ;
 	temp = (*stack_a)->number;
 	(*stack_a)->number = (*stack_a)->down->number;
 	(*stack_a)->down->number = temp;
-
 	idx = (*stack_a)->index;
 	(*stack_a)->index = (*stack_a)->down->index;
 	(*stack_a)->down->index = idx;
-
 	write (1, "sa\n", 3);
 }
 
 // sa and sb at the same time.
-void	swap_both (t_stack **stack_a, t_stack **stack_b)
+void	swap_both(t_stack **stack_a, t_stack **stack_b)
 {
 	swap_a (stack_a);
 	swap_b (stack_b);
-
 	write (1, "ss\n", 3);
 }
 
 // Take the first element at the top of b and put it at the
 //  top of a. Do nothing if b is empty.
-void	push_a (t_stack **stack_a, t_stack **stack_b)
+void	push_a(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *node;
+	t_stack	*node;
 
 	if (!*stack_b)
 		return ;
@@ -74,10 +71,10 @@ void	push_a (t_stack **stack_a, t_stack **stack_b)
 
 // Shift up all elements of stack a by 1.
 // The first element becomes the last one.
-void	rotate_a (t_stack **stack_a)
+void	rotate_a(t_stack **stack_a)
 {
-	t_stack *first_node;
-	t_stack *last_node;
+	t_stack	*first_node;
+	t_stack	*last_node;
 
 	if (!*stack_a)
 		return ;
@@ -92,10 +89,10 @@ void	rotate_a (t_stack **stack_a)
 
 // Shift down all elements of stack a by 1.
 // The last element becomes the first one.
-void	reverse_rotate_a (t_stack **stack_a)
+void	reverse_rotate_a(t_stack **stack_a)
 {
-	t_stack *first_node;
-	t_stack *last_node;
+	t_stack	*first_node;
+	t_stack	*last_node;
 
 	if (!*stack_a)
 		return ;
@@ -108,4 +105,3 @@ void	reverse_rotate_a (t_stack **stack_a)
 	*stack_a = last_node;
 	write (1, "rra\n", 4);
 }
-
