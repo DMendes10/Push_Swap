@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:01:58 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/27 17:01:53 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:31:16 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <stddef.h>
 # include <limits.h>
 
-# define SUCCESS 1
-# define FAILED 0
+// # define SUCCESS 1
+// # define FAILED 0
 
 typedef struct s_list
 {
@@ -29,18 +29,18 @@ typedef struct s_list
 	struct s_list	*down;
 	long			number;
 	long			index;
-}t_stack;
+}	t_stack;
 
 typedef struct s_range
 {
 	int		min;
 	int		max;
 	int		count_limit;
-}t_range;
+}	t_range;
 
 // main
-
-int	arg_checker (char *arg);
+int		check_sorted(t_stack *stack_a);
+int		optimal_divider(int size);
 
 //list_utils
 t_stack	*ft_lstnew(long content);
@@ -57,50 +57,43 @@ int		ft_split_atoi(const char *arg, t_stack **stack);
 
 // libft_helper
 int		ft_isdigit(int c);
-void	reverse_rotate_both (t_stack **stack_a, t_stack **stack_b);
+void	reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
 
 // a_operations
-void	swap_a (t_stack **stack_a);
-void	swap_both (t_stack **stack_a, t_stack **stack_b);
-void	push_a (t_stack **stack_a, t_stack **stack_b);
-void	rotate_a (t_stack **stack_a);
-void	reverse_rotate_a (t_stack **stack_a);
+void	swap_a(t_stack **stack_a);
+void	swap_both(t_stack **stack_a, t_stack **stack_b);
+void	push_a(t_stack **stack_a, t_stack **stack_b);
+void	rotate_a(t_stack **stack_a);
+void	reverse_rotate_a(t_stack **stack_a);
 
 // b_operations
-void	swap_b (t_stack **stack_b);
-void	push_b (t_stack **stack_a, t_stack **stack_b);
-void	rotate_b (t_stack **stack_b);
-void	rotate_both (t_stack **stack_a, t_stack **stack_b);
-void	reverse_rotate_b (t_stack **stack_b);
+void	swap_b(t_stack **stack_b);
+void	push_b(t_stack **stack_a, t_stack **stack_b);
+void	rotate_b(t_stack **stack_b);
+void	rotate_both(t_stack **stack_a, t_stack **stack_b);
+void	reverse_rotate_b(t_stack **stack_b);
 
 // sorting_utils
-void	choose_sort (t_stack **stack_a, t_stack **stack_b, int divider);
-void	sort_three (t_stack **stack);
-void	normalize_stack (t_stack **stack_a, int size);
+void	choose_sort(t_stack **stack_a, t_stack **stack_b, int divider);
+void	sort_three(t_stack **stack);
+void	normalize_stack(t_stack **stack_a, int size);
 void	sort_b(t_stack **stack_a, t_stack **stack_b, t_range data);
-void	normalize_and_push (t_stack **stack_a, t_stack **stack_b, int size, int divider);
-
+void	normalize_and_push(t_stack **stack_a, t_stack **stack_b, int size, \
+	int divider);
 
 // sorting_b
-void	push_b_down (t_stack **stack_a, t_stack **stack_b, int idx);
-void	push_b_up (t_stack **stack_a, t_stack **stack_b, int idx);
-void	push_b_down_alt (t_stack **stack_a, t_stack **stack_b, int idx);
-void	push_b_up_alt (t_stack **stack_a, t_stack **stack_b, int idx);
-void	organize_four (t_stack **stack_a, t_stack **stack_b, int size);
-
-
+void	push_b_down(t_stack **stack_a, t_stack **stack_b, int idx);
+void	push_b_up(t_stack **stack_a, t_stack **stack_b, int idx);
+void	push_b_down_alt(t_stack **stack_a, t_stack **stack_b, int idx);
+void	push_b_up_alt(t_stack **stack_a, t_stack **stack_b, int idx);
+void	organize_four(t_stack **stack_a, t_stack **stack_b, int size);
 
 // sorting_part2
-void	push_decider (t_stack **stack_a, t_stack **stack_b, int size);
-int		push_cost (t_stack *stack_b, int idx);
-int		top_cost (t_stack *stack_b, int idx);
-int		bottom_cost (t_stack *stack_b, int idx);
+void	push_decider(t_stack **stack_a, t_stack **stack_b, int size);
+int		push_cost(t_stack *stack_b, int idx);
+int		top_cost(t_stack *stack_b, int idx);
+int		bottom_cost(t_stack *stack_b, int idx);
 
-
-
-int	check_sorted (t_stack *stack_a);
-
-void print_value (t_stack *a, t_stack *b);
-
+// void print_value (t_stack *a, t_stack *b);
 
 #endif

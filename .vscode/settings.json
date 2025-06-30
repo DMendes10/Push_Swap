@@ -14,6 +14,7 @@
 		"utility": "c",
 		"random": "c",
 		"limits": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"stdlib.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 19:40:26 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/27 17:26:53 by diomende         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:23:26 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
-void	reverse_rotate_both (t_stack **stack_a, t_stack **stack_b)
+void	reverse_rotate_both(t_stack **stack_a, t_stack **stack_b)
 {
 	reverse_rotate_a (stack_a);
 	reverse_rotate_b (stack_b);
