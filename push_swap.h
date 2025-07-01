@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:01:58 by diogo             #+#    #+#             */
-/*   Updated: 2025/06/30 16:31:16 by diomende         ###   ########.fr       */
+/*   Updated: 2025/07/01 19:39:45 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		ft_split_atoi(const char *arg, t_stack **stack);
 // libft_helper
 int		ft_isdigit(int c);
 void	reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
+void	optimal_rotate(t_stack **stack_a, t_stack **stack_b, t_range data);
 
 // a_operations
 void	swap_a(t_stack **stack_a);
@@ -86,7 +87,7 @@ void	push_b_down(t_stack **stack_a, t_stack **stack_b, int idx);
 void	push_b_up(t_stack **stack_a, t_stack **stack_b, int idx);
 void	push_b_down_alt(t_stack **stack_a, t_stack **stack_b, int idx);
 void	push_b_up_alt(t_stack **stack_a, t_stack **stack_b, int idx);
-void	organize_four(t_stack **stack_a, t_stack **stack_b, int size);
+void	organize_four(t_stack **stack_a, t_stack **stack_b);
 
 // sorting_part2
 void	push_decider(t_stack **stack_a, t_stack **stack_b, int size);

@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:59:27 by diomende          #+#    #+#             */
-/*   Updated: 2025/06/30 16:38:05 by diomende         ###   ########.fr       */
+/*   Updated: 2025/07/01 18:40:35 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	choose_sort(t_stack **stack_a, t_stack **stack_b, int divider)
 {
 	int		size;
-	t_range	data;
 
 	size = ft_lstsize (*stack_a);
 	if (size == 2)
@@ -23,7 +22,7 @@ void	choose_sort(t_stack **stack_a, t_stack **stack_b, int divider)
 	else if (size == 3)
 		sort_three(stack_a);
 	else if (size == 4)
-		organize_four(stack_a, stack_b, 4);
+		organize_four(stack_a, stack_b);
 	else
 	{
 		normalize_and_push (stack_a, stack_b, size, divider);
@@ -72,8 +71,7 @@ void	sort_b(t_stack **stack_a, t_stack **stack_b, t_range data)
 		if ((*stack_a)->index < data.min && (*stack_a)->index < \
 		data.count_limit)
 		{
-			push_b (stack_a, stack_b);
-			rotate_b (stack_b);
+			optimal_rotate (stack_a, stack_b, data);
 			count++;
 		}
 		else if ((*stack_a)->index <= data.max && (*stack_a)->index \

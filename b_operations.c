@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 18:49:36 by diomende          #+#    #+#             */
-/*   Updated: 2025/06/27 17:55:39 by diomende         ###   ########.fr       */
+/*   Updated: 2025/07/01 19:38:25 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,29 @@ void	rotate_b(t_stack **stack_b)
 
 void	rotate_both(t_stack **stack_a, t_stack **stack_b)
 {
-	rotate_a (stack_a);
-	rotate_b (stack_b);
+	t_stack	*first_node;
+	t_stack	*last_node;
+
+	if (!*stack_a)
+		return ;
+	if (ft_lstsize (*stack_a) < 2)
+		return ;
+	if (!*stack_b)
+		return ;
+	if (ft_lstsize (*stack_b) < 2)
+		return ;
+	first_node = *stack_a;
+	last_node = ft_lst_last(*stack_a);
+	*stack_a = (*stack_a)->down;
+	last_node->down = first_node;
+	first_node->up = last_node;
+	first_node->down = NULL;
+	first_node = *stack_b;
+	last_node = ft_lst_last(*stack_b);
+	*stack_b = (*stack_b)->down;
+	last_node->down = first_node;
+	first_node->up = last_node;
+	first_node->down = NULL;
 	write (1, "rr\n", 3);
 }
 

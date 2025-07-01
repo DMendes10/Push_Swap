@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:02:26 by diomende          #+#    #+#             */
-/*   Updated: 2025/06/30 16:33:21 by diomende         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:29:55 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,8 @@ void	push_b_up_alt(t_stack **stack_a, t_stack **stack_b, int idx)
 	}
 }
 
-void	organize_four(t_stack **stack_a, t_stack **stack_b, int size)
+void	organize_four(t_stack **stack_a, t_stack **stack_b)
 {
-	int	cost_top;
-	int	cost_bottom;
-
 	normalize_stack (stack_a, 4);
 	while (*stack_a)
 	{
